@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "Modular learning platform with programming exercises",
   "scripts": {
-    "test": "echo \"No tests specified\""
+    "test": "echo \"No tests specified\"",
+    "build": "babel script.js --out-file dist/script.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.0",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1"
   }
 }
