@@ -14,6 +14,18 @@ var modules = [{
   path: 'modules/programming.json',
   name: 'Programmering'
 }];
+function ModuleNav(_ref) {
+  var modules = _ref.modules,
+    onSelect = _ref.onSelect;
+  return /*#__PURE__*/React.createElement("nav", null, modules.map(function (m) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: m.name,
+      onClick: function onClick() {
+        return onSelect(m);
+      }
+    }, m.name);
+  }));
+}
 function App() {
   var _React$useState = React.useState(null),
     _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -31,7 +43,7 @@ function App() {
     document.body.className = "".concat(darkMode ? 'dark' : 'light', " accent-").concat(accent);
   }, [darkMode, accent]);
   var loadModule = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
       var res, data;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.n) {
@@ -51,19 +63,12 @@ function App() {
       }, _callee);
     }));
     return function loadModule(_x) {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   return /*#__PURE__*/React.createElement("div", {
     className: "app"
-  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("h1", null, "L\xE4rplattform"), /*#__PURE__*/React.createElement("nav", null, modules.map(function (m) {
-    return /*#__PURE__*/React.createElement("button", {
-      key: m.name,
-      onClick: function onClick() {
-        return loadModule(m);
-      }
-    }, m.name);
-  })), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("h1", null, "L\xE4rplattform"), /*#__PURE__*/React.createElement("div", {
     className: "mode-switch"
   }, /*#__PURE__*/React.createElement("label", null, /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
@@ -71,16 +76,6 @@ function App() {
     onChange: function onChange() {
       return setDarkMode(!darkMode);
     }
-  }), darkMode ? 'Dark' : 'Light'), /*#__PURE__*/React.createElement("select", {
-    value: accent,
-    onChange: function onChange(e) {
-      return setAccent(e.target.value);
-    }
-  }, /*#__PURE__*/React.createElement("option", {
-    value: "primary"
-  }, "Primary"), /*#__PURE__*/React.createElement("option", {
-    value: "neutral"
-  }, "Neutral")))), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
     return /*#__PURE__*/React.createElement("div", {
       key: idx,
       className: "lesson"

@@ -2,6 +2,18 @@ const modules = [
   { path: 'modules/programming.json', name: 'Programmering' }
 ];
 
+function ModuleNav({ modules, onSelect }) {
+  return (
+    <nav>
+      {modules.map((m) => (
+        <button key={m.name} onClick={() => onSelect(m)}>
+          {m.name}
+        </button>
+      ))}
+    </nav>
+  );
+}
+
 function App() {
   const [currentModule, setCurrentModule] = React.useState(null);
   const [darkMode, setDarkMode] = React.useState(false);
@@ -21,11 +33,6 @@ function App() {
     <div className="app">
       <header>
         <h1>Lärplattform</h1>
-        <nav>
-          {modules.map((m) => (
-            <button key={m.name} onClick={() => loadModule(m)}>{m.name}</button>
-          ))}
-        </nav>
         <div className="mode-switch">
           <label>
             <input
@@ -41,6 +48,7 @@ function App() {
           </select>
         </div>
       </header>
+      <ModuleNav modules={modules} onSelect={loadModule} />
       <main>
         {currentModule ? (
           currentModule.lessons.map((lesson, idx) => (
