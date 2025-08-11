@@ -17,10 +17,11 @@ function ModuleNav({ modules, onSelect }) {
 function App() {
   const [currentModule, setCurrentModule] = React.useState(null);
   const [darkMode, setDarkMode] = React.useState(false);
+  const [accent, setAccent] = React.useState('primary');
 
   React.useEffect(() => {
-    document.body.className = darkMode ? 'dark' : 'light';
-  }, [darkMode]);
+    document.body.className = `${darkMode ? 'dark' : 'light'} accent-${accent}`;
+  }, [darkMode, accent]);
 
   const loadModule = async (mod) => {
     const res = await fetch(mod.path);
@@ -41,6 +42,10 @@ function App() {
             />
             {darkMode ? 'Dark' : 'Light'}
           </label>
+          <select value={accent} onChange={(e) => setAccent(e.target.value)}>
+            <option value="primary">Primary</option>
+            <option value="neutral">Neutral</option>
+          </select>
         </div>
       </header>
       <ModuleNav modules={modules} onSelect={loadModule} />
