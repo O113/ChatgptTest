@@ -2,37 +2,60 @@ const modules = [
   { path: 'modules/programming.json', name: 'Programmering' }
 ];
 
-const moduleNav = document.getElementById('module-nav');
-const content = document.getElementById('content');
+function App() {
+  const [currentModule, setCurrentModule] = React.useState(null);
+  const [darkMode, setDarkMode] = React.useState(false);
 
-modules.forEach((m) => {
-  const link = document.createElement('a');
-  link.href = '#';
-  link.textContent = m.name;
-  link.addEventListener('click', () => loadModule(m.path));
-  moduleNav.appendChild(link);
-});
+  React.useEffect(() => {
+    document.body.className = darkMode ? 'dark' : 'light';
+  }, [darkMode]);
 
-async function loadModule(path) {
-  const res = await fetch(path);
-  const data = await res.json();
-  renderModule(data);
+  const loadModule = async (mod) => {
+    const res = await fetch(mod.path);
+    const data = await res.json();
+    setCurrentModule(data);
+  };
+
+  return (
+    <div className="app">
+      <header>
+        <h1>Lärplattform</h1>
+        <nav>
+          {modules.map((m) => (
+            <button key={m.name} onClick={() => loadModule(m)}>{m.name}</button>
+          ))}
+        </nav>
+        <div className="mode-switch">
+          <label>
+            <input
+              type="checkbox"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+            />
+            {darkMode ? 'Dark' : 'Light'}
+          </label>
+        </div>
+      </header>
+      <main>
+        {currentModule ? (
+          currentModule.lessons.map((lesson, idx) => (
+            <div key={idx} className="lesson">
+              <h2>{lesson.title}</h2>
+              <p>{lesson.content}</p>
+              {lesson.exercise && (
+                <div className="exercise">
+                  <strong>Övning:</strong> {lesson.exercise.prompt}
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <p>Välj en modul för att börja.</p>
+        )}
+      </main>
+    </div>
+  );
 }
 
-function renderModule(mod) {
-  content.innerHTML = '';
-  mod.lessons.forEach((lesson) => {
-    const lessonEl = document.createElement('div');
-    lessonEl.className = 'lesson';
-    lessonEl.innerHTML = `<h2>${lesson.title}</h2><p>${lesson.content}</p>`;
-
-    if (lesson.exercise) {
-      const ex = document.createElement('div');
-      ex.className = 'exercise';
-      ex.innerHTML = `<strong>Övning:</strong> ${lesson.exercise.prompt}`;
-      lessonEl.appendChild(ex);
-    }
-
-    content.appendChild(lessonEl);
-  });
-}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
