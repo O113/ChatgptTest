@@ -76,6 +76,19 @@ function App() {
     onChange: function onChange() {
       return setDarkMode(!darkMode);
     }
+  }), darkMode ? 'Dark' : 'Light'), /*#__PURE__*/React.createElement("select", {
+    value: accent,
+    onChange: function onChange(e) {
+      return setAccent(e.target.value);
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "primary"
+  }, "Primary"), /*#__PURE__*/React.createElement("option", {
+    value: "neutral"
+  }, "Neutral")))), /*#__PURE__*/React.createElement(ModuleNav, {
+    modules: modules,
+    onSelect: loadModule
+  }), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
     return /*#__PURE__*/React.createElement("div", {
       key: idx,
       className: "lesson"
