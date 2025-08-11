@@ -31,17 +31,6 @@ function App() {
     _React$useState2 = _slicedToArray(_React$useState, 2),
     currentModule = _React$useState2[0],
     setCurrentModule = _React$useState2[1];
-  var _React$useState3 = React.useState(false),
-    _React$useState4 = _slicedToArray(_React$useState3, 2),
-    darkMode = _React$useState4[0],
-    setDarkMode = _React$useState4[1];
-  var _React$useState5 = React.useState('primary'),
-    _React$useState6 = _slicedToArray(_React$useState5, 2),
-    accent = _React$useState6[0],
-    setAccent = _React$useState6[1];
-  React.useEffect(function () {
-    document.body.className = "".concat(darkMode ? 'dark' : 'light', " accent-").concat(accent);
-  }, [darkMode, accent]);
   var loadModule = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
       var res, data;
@@ -68,24 +57,7 @@ function App() {
   }();
   return /*#__PURE__*/React.createElement("div", {
     className: "app"
-  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("h1", null, "L\xE4rplattform"), /*#__PURE__*/React.createElement("div", {
-    className: "mode-switch"
-  }, /*#__PURE__*/React.createElement("label", null, /*#__PURE__*/React.createElement("input", {
-    type: "checkbox",
-    checked: darkMode,
-    onChange: function onChange() {
-      return setDarkMode(!darkMode);
-    }
-  }), darkMode ? 'Dark' : 'Light'), /*#__PURE__*/React.createElement("select", {
-    value: accent,
-    onChange: function onChange(e) {
-      return setAccent(e.target.value);
-    }
-  }, /*#__PURE__*/React.createElement("option", {
-    value: "primary"
-  }, "Primary"), /*#__PURE__*/React.createElement("option", {
-    value: "neutral"
-  }, "Neutral")))), /*#__PURE__*/React.createElement(ModuleNav, {
+  }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("h1", null, "L\xE4rplattform")), /*#__PURE__*/React.createElement(ModuleNav, {
     modules: modules,
     onSelect: loadModule
   }), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
