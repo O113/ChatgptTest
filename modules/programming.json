@@ -1,0 +1,13 @@
+{
+  "title": "Programmering",
+  "lessons": [
+    {
+      "title": "Introduktion till Variabler",
+      "content": "Variabler lagrar data i ditt program.",
+      "exercise": {
+        "prompt": "Skapa en variabel 'x' med värdet 5 och skriv ut den.",
+        "solution": "let x = 5; console.log(x);"
+      }
+    }
+  ]
+}

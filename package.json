@@ -1,0 +1,8 @@
+{
+  "name": "learning-platform",
+  "version": "1.0.0",
+  "description": "Modular learning platform with programming exercises",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  }
+}
