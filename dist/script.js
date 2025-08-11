@@ -23,9 +23,13 @@ function App() {
     _React$useState4 = _slicedToArray(_React$useState3, 2),
     darkMode = _React$useState4[0],
     setDarkMode = _React$useState4[1];
+  var _React$useState5 = React.useState('primary'),
+    _React$useState6 = _slicedToArray(_React$useState5, 2),
+    accent = _React$useState6[0],
+    setAccent = _React$useState6[1];
   React.useEffect(function () {
-    document.body.className = darkMode ? 'dark' : 'light';
-  }, [darkMode]);
+    document.body.className = "".concat(darkMode ? 'dark' : 'light', " accent-").concat(accent);
+  }, [darkMode, accent]);
   var loadModule = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
       var res, data;
@@ -67,7 +71,16 @@ function App() {
     onChange: function onChange() {
       return setDarkMode(!darkMode);
     }
-  }), darkMode ? 'Dark' : 'Light'))), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
+  }), darkMode ? 'Dark' : 'Light'), /*#__PURE__*/React.createElement("select", {
+    value: accent,
+    onChange: function onChange(e) {
+      return setAccent(e.target.value);
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "primary"
+  }, "Primary"), /*#__PURE__*/React.createElement("option", {
+    value: "neutral"
+  }, "Neutral")))), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
     return /*#__PURE__*/React.createElement("div", {
       key: idx,
       className: "lesson"
