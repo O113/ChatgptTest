@@ -1,12 +1,116 @@
 {
-  "title": "Programmering",
+  "title": "Programmering PROG1000X",
   "lessons": [
     {
-      "title": "Introduktion till Variabler",
-      "content": "Variabler lagrar data i ditt program.",
+      "title": "Programmeringens möjligheter och begränsningar",
+      "content": "Program skapas för att lösa problem, automatisera uppgifter och behandla data.\n\nDatorkraft och minneskapacitet sätter gränser för vad som är möjligt och hur snabbt det kan utföras.",
       "exercise": {
-        "prompt": "Skapa en variabel 'x' med värdet 5 och skriv ut den.",
-        "solution": "let x = 5; console.log(x);"
+        "prompt": "Skriv ett program som påminner dig om att vattna blommorna.",
+        "solution": "print(\"Kom ihåg att vattna blommorna!\")"
+      }
+    },
+    {
+      "title": "Samspelet mellan program och hårdvara",
+      "content": "Program körs i en exekveringsmiljö som kommunicerar med operativsystemet och hårdvaran.\n\nOperativsystemet fördelar resurser som CPU och minne mellan olika program.",
+      "exercise": {
+        "prompt": "Skriv ett program som visar vilket operativsystem Python körs på.",
+        "solution": "import platform\nprint(platform.system())"
+      }
+    },
+    {
+      "title": "Datavetenskapliga begrepp",
+      "content": "Begrepp som algoritm, data, variabel och iteration används för att beskriva program.\n\nEn algoritm är en steg-för-steg-beskrivning av hur ett problem löses.",
+      "exercise": {
+        "prompt": "Skriv kod som beräknar summan av talen 1 till 10.",
+        "solution": "total = sum(range(1, 11))\nprint(total)"
+      }
+    },
+    {
+      "title": "Strukturerad problemlösning",
+      "content": "Komplexa problem delas upp i mindre delar som kan lösas stegvis.\n\nAtt beskriva problemet och planera innan kod skrivs leder till tydligare program.",
+      "exercise": {
+        "prompt": "Dela upp problemet 'beräkna medelvärdet av en lista tal' i delsteg och implementera i Python.",
+        "solution": "numbers = [3, 5, 7]\nmean = sum(numbers) / len(numbers)\nprint(mean)"
+      }
+    },
+    {
+      "title": "Pseudokod och diagramteknik",
+      "content": "Pseudokod och flödesscheman hjälper till att planera program.\n\nDe beskriver logiken utan att vara bunden till ett specifikt språk.",
+      "exercise": {
+        "prompt": "Skriv pseudokod eller Pythonkod som avgör om ett tal är positivt eller negativt.",
+        "solution": "num = int(input(\"Ange ett tal: \"))\nif num >= 0:\n    print(\"Positivt\")\nelse:\n    print(\"Negativt\")"
+      }
+    },
+    {
+      "title": "Introduktion till Python",
+      "content": "Python är ett populärt textbaserat språk med enkel syntax.\n\nKoden skrivs i .py-filer och körs av tolken.",
+      "exercise": {
+        "prompt": "Skriv ett program som skriver 'Hej, världen!'.",
+        "solution": "print(\"Hej, världen!\")"
+      }
+    },
+    {
+      "title": "Utvecklingsverktyg: IDE och versionshantering",
+      "content": "IDE:er som VS Code ger stöd för syntaxmarkering och felsökning.\n\nGit spårar ändringar i koden och möjliggör samarbete.",
+      "exercise": {
+        "prompt": "Skapa en fil hello.py och lägg till den i ett Git-repo.",
+        "solution": "# Terminal\ngit init\necho 'print(\"Hello\")' > hello.py\ngit add hello.py\ngit commit -m 'init'"
+      }
+    },
+    {
+      "title": "Kontrollstrukturer i Python",
+      "content": "Med if-satser, loopar och funktioner styrs flödet i program.\n\nIndrag används för att markera block.",
+      "exercise": {
+        "prompt": "Skriv en if-sats som skriver 'Vuxen' om åldern är minst 18 annars 'Barn'.",
+        "solution": "age = int(input(\"Ålder: \"))\nif age >= 18:\n    print(\"Vuxen\")\nelse:\n    print(\"Barn\")"
+      }
+    },
+    {
+      "title": "Skapa enkla program",
+      "content": "Genom att kombinera variabler, indata och kontrollstrukturer kan vi skapa program som löser uppgifter.",
+      "exercise": {
+        "prompt": "Skriv ett program som beräknar arean av en rektangel.",
+        "solution": "a = float(input(\"Ange bredd: \"))\nb = float(input(\"Ange höjd: \"))\nprint(a * b)"
+      }
+    },
+    {
+      "title": "Sociala aspekter av programmering",
+      "content": "Program påverkar samhället och måste utvecklas med hänsyn till etik och användares behov.\n\nÖppen källkod möjliggör samarbete och delad kunskap.",
+      "exercise": {
+        "prompt": "Skriv en kommentar i Python som beskriver en social aspekt av programmering du tycker är viktig.",
+        "solution": "# Algoritmer i sociala medier påverkar vilken information vi ser"
+      }
+    },
+    {
+      "title": "Feltyper och felsökning",
+      "content": "Syntaxfel, logiska fel och exekveringsfel är vanliga.\n\nGenom att läsa felmeddelanden och testa kod kan fel hittas och åtgärdas.",
+      "exercise": {
+        "prompt": "Korrigera felet i följande kod: print('Hej'",
+        "solution": "print(\"Hej\")"
+      }
+    },
+    {
+      "title": "Undantagshantering",
+      "content": "Med try/except fångas fel under körning och programmet kan fortsätta.\n\nDet är bra att hantera förväntade fel som felaktig indata.",
+      "exercise": {
+        "prompt": "Skriv kod som fångar ett ZeroDivisionError när ett tal delas med noll.",
+        "solution": "try:\n    x = 5 / 0\nexcept ZeroDivisionError:\n    print(\"Kan inte dela med noll\")"
+      }
+    },
+    {
+      "title": "Goda kodprinciper",
+      "content": "Meningsfulla namn och kommentarer gör koden lättare att förstå.\n\nFunktioner och modulär kod ger bättre struktur.",
+      "exercise": {
+        "prompt": "Förbättra namnen i koden: a=5; b=7; print(a*b)",
+        "solution": "width = 5\nheight = 7\nprint(width * height)"
+      }
+    },
+    {
+      "title": "Användargränssnitt i Python",
+      "content": "Program kan interagera med användare via terminal, GUI eller webben.\n\nEtt enkelt textgränssnitt använder input och print.",
+      "exercise": {
+        "prompt": "Skapa ett textbaserat program som frågar efter namn och hälsar användaren.",
+        "solution": "name = input(\"Vad heter du? \")\nprint(f\"Hej {name}!\")"
       }
     }
   ]
