@@ -12,7 +12,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var modules = [{
   path: 'modules/programming.json',
-  name: 'Programmering'
+  name: 'Programmering PROG1000X'
 }];
 function ModuleNav(_ref) {
   var modules = _ref.modules,
@@ -26,13 +26,43 @@ function ModuleNav(_ref) {
     }, m.name);
   }));
 }
+function LessonNav(_ref2) {
+  var lessons = _ref2.lessons,
+    current = _ref2.current,
+    onSelect = _ref2.onSelect;
+  return /*#__PURE__*/React.createElement("aside", null, lessons.map(function (lesson, idx) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: lesson.title,
+      className: idx === current ? 'active' : '',
+      onClick: function onClick() {
+        return onSelect(idx);
+      }
+    }, lesson.title);
+  }));
+}
+function LessonView(_ref3) {
+  var lesson = _ref3.lesson;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "lesson"
+  }, /*#__PURE__*/React.createElement("h2", null, lesson.title), lesson.content.split('\n').map(function (paragraph, idx) {
+    return /*#__PURE__*/React.createElement("p", {
+      key: idx
+    }, paragraph);
+  }), lesson.exercise && /*#__PURE__*/React.createElement("div", {
+    className: "exercise"
+  }, /*#__PURE__*/React.createElement("strong", null, "\xD6vning:"), " ", lesson.exercise.prompt));
+}
 function App() {
   var _React$useState = React.useState(null),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     currentModule = _React$useState2[0],
     setCurrentModule = _React$useState2[1];
+  var _React$useState3 = React.useState(0),
+    _React$useState4 = _slicedToArray(_React$useState3, 2),
+    currentLesson = _React$useState4[0],
+    setCurrentLesson = _React$useState4[1];
   var loadModule = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mod) {
       var res, data;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.n) {
@@ -46,28 +76,31 @@ function App() {
           case 2:
             data = _context.v;
             setCurrentModule(data);
+            setCurrentLesson(0);
           case 3:
             return _context.a(2);
         }
       }, _callee);
     }));
     return function loadModule(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
+  var lesson = currentModule ? currentModule.lessons[currentLesson] : null;
   return /*#__PURE__*/React.createElement("div", {
     className: "app"
   }, /*#__PURE__*/React.createElement("header", null, /*#__PURE__*/React.createElement("h1", null, "L\xE4rplattform")), /*#__PURE__*/React.createElement(ModuleNav, {
     modules: modules,
     onSelect: loadModule
-  }), /*#__PURE__*/React.createElement("main", null, currentModule ? currentModule.lessons.map(function (lesson, idx) {
-    return /*#__PURE__*/React.createElement("div", {
-      key: idx,
-      className: "lesson"
-    }, /*#__PURE__*/React.createElement("h2", null, lesson.title), /*#__PURE__*/React.createElement("p", null, lesson.content), lesson.exercise && /*#__PURE__*/React.createElement("div", {
-      className: "exercise"
-    }, /*#__PURE__*/React.createElement("strong", null, "\xD6vning:"), " ", lesson.exercise.prompt));
-  }) : /*#__PURE__*/React.createElement("p", null, "V\xE4lj en modul f\xF6r att b\xF6rja.")));
+  }), /*#__PURE__*/React.createElement("main", null, currentModule ? /*#__PURE__*/React.createElement("div", {
+    className: "module-view"
+  }, /*#__PURE__*/React.createElement(LessonNav, {
+    lessons: currentModule.lessons,
+    current: currentLesson,
+    onSelect: setCurrentLesson
+  }), /*#__PURE__*/React.createElement(LessonView, {
+    lesson: lesson
+  })) : /*#__PURE__*/React.createElement("p", null, "V\xE4lj en modul f\xF6r att b\xF6rja.")));
 }
 var root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(/*#__PURE__*/React.createElement(App, null));
